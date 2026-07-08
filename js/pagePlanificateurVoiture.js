@@ -1,4 +1,8 @@
 function optionsBornesPlanificateur(selectedNom = "") {
+
+  if (typeof chargerPrixBornes === "function") {
+    chargerPrixBornes();
+  }
   return `
     <option value="">-- Choisir une borne --</option>
     ${bornesStrategiques.map(borne => `
