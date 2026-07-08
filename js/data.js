@@ -7,52 +7,32 @@ let vehicule = {
 };
 
 let mission = {
-  nom: "Portugal 2026",
-  depart: "ESTER Limoges",
-  arrivee: "Ílhavo, Portugal",
+  nom: "Mission Portugal 2026",
+  depart: "10 allée marguerite moreno limoges",
+  arrivee: "16 rua do corgo da rainha ilhavo",
   heureDepart: "03h00",
-  modeEspagne: "peage",
+
+  modeEspagne: "sansPeage",
+  sensTrajet: "aller",
+
   adultes: 2,
   enfants: 2,
   bagages: 80,
   vitesse: 120,
-  distanceTotale: 1254,
 
-  troncons: [
-    {
-      depart: "ESTER Limoges",
-      arrivee: "Zunder Saugnac-et-Muret",
-      distance: 330,
-      route: "peage"
-    },
+  distanceTotale: 0,
 
-    {
-      depart: "Zunder Saugnac-et-Muret",
-      arrivee: "Zunder Pancorbo",
-      distance: 291,
-      route: "peage"
-    },
+  borne1: "",
+  borne2: "",
+  borne3: "",
+  borne4: "",
+  borne5: "",
 
-    {
-      depart: "Zunder Pancorbo",
-      arrivee: "Vilar Formoso",
-      distance: 423,
-      route: "sans-peage"
-    },
+  voitureRecharge1: "",
+  voitureRecharge2: "",
+  voitureRecharge3: "",
+  voitureRecharge4: "",
+  voitureRecharge5: "",
 
-    {
-      depart: "Vilar Formoso",
-      arrivee: "Ílhavo",
-      distance: 210,
-      route: "peage"
-    }
-  ],
-
-  etapes: [
-    { nom: "Départ ESTER", distance: 0, recharge: null },
-    { nom: "Zunder Saugnac-et-Muret", distance: 330, recharge: 75 },
-    { nom: "Zunder Pancorbo", distance: 291, recharge: 93 },
-    { nom: "Vilar Formoso", distance: 423, recharge: 90 },
-    { nom: "Ílhavo", distance: 210, recharge: null }
-  ]
+  troncons: []
 };

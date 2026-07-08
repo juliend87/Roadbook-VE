@@ -8,7 +8,8 @@ let vehicules = [
     conso: 18.5,
     km: 0,
     temperatureBatterie: 25,
-    source: "La Chaine EV / manuel"
+    source: "La Chaine EV / manuel",
+    image: "assets/ev4.jpg"
   },
   {
     nom: "DS N°4",
@@ -18,7 +19,8 @@ let vehicules = [
     conso: 17.5,
     km: 0,
     temperatureBatterie: 25,
-    source: "À compléter"
+    source: "À compléter",
+    image: "assets/ds4.jpg"
   }
 ];
 
@@ -36,13 +38,16 @@ function chargerVehicules() {
   if (data) vehicules = JSON.parse(data);
   if (index !== null) vehiculeIndex = Number(index);
 
-  vehicule = {
-    modele: vehicules[vehiculeIndex].nom,
-    batterie: vehicules[vehiculeIndex].batterie,
-    soh: vehicules[vehiculeIndex].soh,
-    jantes: vehicules[vehiculeIndex].jantes,
-    conso: vehicules[vehiculeIndex].conso
-  };
+ vehicule = {
+  modele: vehicules[vehiculeIndex].nom,
+  batterie: vehicules[vehiculeIndex].batterie,
+  soh: vehicules[vehiculeIndex].soh,
+  jantes: vehicules[vehiculeIndex].jantes,
+  conso: vehicules[vehiculeIndex].conso,
+  image: vehicules[vehiculeIndex].image
+};
+
+appliquerFondVehicule();
 }
 
 function choisirVehicule(index) {
@@ -179,3 +184,16 @@ chargerVehicules();
 console.log("vehicules =", vehicules);
 console.log("vehiculeIndex =", vehiculeIndex);
 console.log("vehicule actif =", vehicule);
+
+function appliquerFondVehicule() {
+
+  if (!vehicule.image) return;
+
+  document.body.style.backgroundImage =
+    `linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('${vehicule.image}')`;
+
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundPosition = "right bottom";
+  document.body.style.backgroundSize = "40%";
+  document.body.style.backgroundAttachment = "fixed";
+}
