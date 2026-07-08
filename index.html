@@ -1,136 +1,80 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Roadbook VE</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadbook VE</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+<div class="app">
 
-<div class="container-fluid">
+<aside class="sidebar">
+    <div class="logo">🚗 Roadbook VE</div>
 
-<a class="navbar-brand" href="#">🚗 Roadbook VE</a>
+    <button onclick="changerPage('accueil')">🏠 Accueil</button>
+    <button onclick="changerPage('vehicule')">🚘 Véhicule</button>
+    <button onclick="changerPage('voyages')">🏁 Voyages</button>
+    <button onclick="changerPage('planificateurVoiture')">🚘 Planificateur voiture</button>
+    <button onclick="changerPage('bornes')">🔌 Bornes</button>
+    <button onclick="changerPage('budget')">💶 Budget</button>
+    <button onclick="changerPage('rfid')">💳 RFID</button>
+    <button onclick="changerPage('parametres')">⚙️ Paramètres</button>
 
-<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+    <div class="sidebar-card">
+        <p>Batterie réelle</p>
+        <h2 id="sideBattery">81.4 kWh</h2>
+        <p>Autonomie estimée</p>
+        <h2 class="green" id="sideRange">440 km</h2>
+    </div>
+</aside>
 
-<span class="navbar-toggler-icon"></span>
+<section class="main">
 
-</button>
+<header class="topbar">
+    <div></div>
+    <div>Mission Portugal 2026 🇵🇹</div>
+</header>
 
-<div class="collapse navbar-collapse" id="menu">
+<main id="contenu"></main>
 
-<ul class="navbar-nav ms-auto">
+<footer>
+    <span id="footerVehicule"></span>
+    <span id="footerSoh"></span>
+    <span id="footerJantes"></span>
+    <span id="footerConso"></span>
+</footer>
 
-<li class="nav-item"><a class="nav-link active" href="#">Accueil</a></li>
-
-<li class="nav-item"><a class="nav-link" href="#">Véhicules</a></li>
-
-<li class="nav-item"><a class="nav-link" href="#">Voyages</a></li>
-
-<li class="nav-item"><a class="nav-link" href="#">Recharges</a></li>
-
-<li class="nav-item"><a class="nav-link" href="#">Statistiques</a></li>
-
-<li class="nav-item"><a class="nav-link" href="#">Paramètres</a></li>
-
-</ul>
-
-</div>
-
-</div>
-
-</nav>
-
-<div class="container mt-4">
-
-<div class="row">
-
-<div class="col-md-4">
-
-<div class="card shadow mb-4">
-
-<div class="card-header">
-
-🚗 Véhicule
+</section>
 
 </div>
 
-<div class="card-body">
-
-<h5>Kia EV4 Grande Autonomie</h5>
-
-<p>SOH : <span id="soh">100</span>%</p>
-
-<p>Batterie : 81.4 kWh</p>
-
-<p>Jantes : 17"</p>
-
-<button class="btn btn-primary w-100">
-
-Modifier
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="col-md-8">
-
-<div class="card shadow">
-
-<div class="card-header">
-
-🗺️ Mission
-
-</div>
-
-<div class="card-body">
-
-<h3>Portugal 2026</h3>
-
-<p>ESTER ➜ Ílhavo</p>
-
-<p>
-
-3 recharges prévues
-
-</p>
-
-<button class="btn btn-success">
-
-Ouvrir le Roadbook
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="js/data.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/calculs.js"></script>
+<script src="js/roadbook.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/vehicules.js"></script>
+<script src="js/recharges.js"></script>
+<script src="js/config.js"></script>
+<script src="js/ors.js"></script>
+<script src="js/temps.js"></script>
+<script src="js/carte.js"></script>
+<script src="js/backup.js"></script>
+<script src="js/bornes.js"></script>
+<script src="js/voyagesBornes.js"></script>
+<script src="js/planB.js"></script>
+<script src="js/strategieRecharge.js"></script>
+<script src="js/simulation.js"></script>
+<script src="js/generateurTrajet.js"></script>
+<script src="js/journalVoyage.js"></script>
+<script src="js/historique.js"></script>
+<script src="js/pageBornes.js"></script>
+<script src="js/reseaux.js"></script>
+<script src="js/pagePlanificateurVoiture.js"></script>
 <script src="js/app.js"></script>
-
-</body>
-
 </html>
