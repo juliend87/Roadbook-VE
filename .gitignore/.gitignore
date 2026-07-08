@@ -1,9 +1,0 @@
-# Fichiers système
-.DS_Store
-Thumbs.db
-
-# Visual Studio Code
-.vscode/
-
-# Logs
-*.log
