@@ -326,3 +326,8 @@ function chargerPrixBornes() {
     }
   });
 }
+
+function initialiserBornes() {
+  chargerPrixBornes();
+  console.log("Bornes chargées :", bornesStrategiques.length);
+}
