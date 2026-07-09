@@ -11,6 +11,7 @@ let mission = {
   depart: "10 allée marguerite moreno limoges",
   arrivee: "16 rua do corgo da rainha ilhavo",
   heureDepart: "03h00",
+  socDepart: 100,
 
   modeEspagne: "sansPeage",
   sensTrajet: "aller",

@@ -32,7 +32,7 @@ function genererRoadbook() {
 
 function genererTroncons() {
 
-  let batterieDisponible = 100;
+  let batterieDisponible = mission.socDepart;
   let html = "";
 
   mission.troncons.forEach((troncon, index) => {

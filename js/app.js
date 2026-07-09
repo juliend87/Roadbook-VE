@@ -174,6 +174,7 @@ function pageAccueil() {
     </div>
   `;
 }
+
 function pageVoyages() {
 
   return `
@@ -259,7 +260,18 @@ function pageVoyages() {
 
     </div>
 
- ${genererSelectBornesVoyage()}
+${genererSelectBornesVoyage()}
+
+<div class="carte">
+  <h2>🔋 Batterie au départ</h2>
+
+  <label>État de charge au départ (%)</label>
+  <input id="socDepart" type="number" min="1" max="100" value="${mission.socDepart}">
+
+  <button class="primary-btn" onclick="enregistrerSocDepart()">
+    💾 Enregistrer batterie départ
+  </button>
+</div>
 
 <div class="carte">
   <h2>Carte du voyage</h2>
@@ -269,22 +281,22 @@ function pageVoyages() {
 <div class="carte">
   <h2>Tronçons du voyage</h2>
 
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Départ</th>
-            <th>Arrivée</th>
-            <th>Distance</th>
-            <th>Faisable</th>
-          </tr>
-        </thead>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Départ</th>
+        <th>Arrivée</th>
+        <th>Distance</th>
+        <th>Faisable</th>
+      </tr>
+    </thead>
 
-        <tbody>
-          ${genererTroncons()}
-        </tbody>
-      </table>
-    </div>
+    <tbody>
+      ${genererTroncons()}
+    </tbody>
+  </table>
+</div>
   `;
 }
 
@@ -457,6 +469,7 @@ if (!mission.voitureRecharge4) mission.voitureRecharge4 = "";
 if (!mission.voitureRecharge5) mission.voitureRecharge5 = "";
 
 if (!mission.sensTrajet) mission.sensTrajet = "aller";
+if (!mission.socDepart) mission.socDepart = 100;
 
 chargerVehicules();
 chargerPrixBornes();
