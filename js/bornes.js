@@ -3,6 +3,23 @@ const bornesStrategiques = [
   // 🇫🇷 FRANCE
   // =========================
 
+    {
+    nom: "Zunder - Saugnac-et-Muret",
+    reseau: "Zunder",
+    pays: "France",
+    gps: "44.36140327658299,-0.8522005526727534",
+    puissance: 360,
+    nbBornes: 4,
+    prix: 0.59,
+    type: "secours",
+    planB: "Izivia - Mios",
+    kmPlanB: 37,
+    modeRoute: "lesDeux",
+    zone: "France sud-ouest",
+    electroverse: true,
+    commentaire: "Borne utile en secours sur l'axe Bordeaux / Espagne."
+  },
+  
   {
     nom: "Powerdot - Saint-Geours-de-Maremne",
     reseau: "Powerdot",
@@ -20,22 +37,6 @@ const bornesStrategiques = [
     commentaire: "Très bonne borne avant l'Espagne. Bon arrêt pour sécuriser l'entrée en Espagne."
   },
 
-  {
-    nom: "Zunder - Saugnac-et-Muret",
-    reseau: "Zunder",
-    pays: "France",
-    gps: "44.351856,-0.841918",
-    puissance: 360,
-    nbBornes: 4,
-    prix: 0.59,
-    type: "secours",
-    planB: "Izivia - Mios",
-    kmPlanB: 37,
-    modeRoute: "lesDeux",
-    zone: "France sud-ouest",
-    electroverse: true,
-    commentaire: "Borne utile en secours sur l'axe Bordeaux / Espagne."
-  },
 
   // =========================
   // 🇪🇸 ESPAGNE - SENS FRANCE → PORTUGAL
