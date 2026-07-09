@@ -32,22 +32,35 @@ function sauvegarderVehicules() {
 }
 
 function chargerVehicules() {
+
   const data = localStorage.getItem("roadbookVehicules");
   const index = localStorage.getItem("roadbookVehiculeIndex");
 
   if (data) vehicules = JSON.parse(data);
   if (index !== null) vehiculeIndex = Number(index);
 
- vehicule = {
-  modele: vehicules[vehiculeIndex].nom,
-  batterie: vehicules[vehiculeIndex].batterie,
-  soh: vehicules[vehiculeIndex].soh,
-  jantes: vehicules[vehiculeIndex].jantes,
-  conso: vehicules[vehiculeIndex].conso,
-  image: vehicules[vehiculeIndex].image
-};
+  // Ajoute l'image si elle n'existe pas (anciens véhicules)
+  vehicules.forEach(v => {
+    if (!v.image) {
+      if (v.nom.includes("Kia")) {
+        v.image = "assets/ev4.jpg";
+      } else if (v.nom.includes("DS")) {
+        v.image = "assets/ds4.jpg";
+      }
+    }
+  });
 
-appliquerFondVehicule();
+  vehicule = {
+    modele: vehicules[vehiculeIndex].nom,
+    batterie: vehicules[vehiculeIndex].batterie,
+    soh: vehicules[vehiculeIndex].soh,
+    jantes: vehicules[vehiculeIndex].jantes,
+    conso: vehicules[vehiculeIndex].conso,
+    image: vehicules[vehiculeIndex].image
+  };
+
+  sauvegarderVehicules();
+  appliquerFondVehicule();
 }
 
 function choisirVehicule(index) {
@@ -186,14 +199,15 @@ console.log("vehiculeIndex =", vehiculeIndex);
 console.log("vehicule actif =", vehicule);
 
 function appliquerFondVehicule() {
-
-  if (!vehicule.image) return;
+  if (!vehicule || !vehicule.image) return;
 
   document.body.style.backgroundImage =
-    `linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('${vehicule.image}')`;
+    `linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)), url('${vehicule.image}')`;
 
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundPosition = "right bottom";
-  document.body.style.backgroundSize = "40%";
+  document.body.style.backgroundSize = "45%";
   document.body.style.backgroundAttachment = "fixed";
+
+  console.log("Fond véhicule :", vehicule.image);
 }

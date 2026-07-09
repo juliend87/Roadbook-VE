@@ -32,9 +32,23 @@ function genererRoadbook() {
 
 function genererTroncons() {
 
+  let batterieDisponible = 100;
   let html = "";
 
   mission.troncons.forEach((troncon, index) => {
+
+    const conso = consoReelle();
+    const energieNecessaire = troncon.distance * conso / 100;
+    const pourcentageNecessaire = energieNecessaire / batterieReelle() * 100;
+    const batterieArrivee = batterieDisponible - pourcentageNecessaire;
+
+    let statut = "🟢 OK";
+
+    if (batterieArrivee < 0) {
+      statut = "🔴 Impossible";
+    } else if (batterieArrivee < 15) {
+      statut = "🟠 Limite";
+    }
 
     html += `
       <tr>
@@ -42,10 +56,15 @@ function genererTroncons() {
         <td>${troncon.depart}</td>
         <td>${troncon.arrivee}</td>
         <td>${troncon.distance} km</td>
-        <td>${libelleRoute(troncon.route)}</td>
+        <td>
+          Départ : ${Math.round(batterieDisponible)} %<br>
+          Arrivée : ${Math.round(batterieArrivee)} %<br>
+          ${statut}
+        </td>
       </tr>
     `;
 
+    batterieDisponible = 80;
   });
 
   return html;

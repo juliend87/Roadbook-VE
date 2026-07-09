@@ -276,7 +276,7 @@ function pageVoyages() {
             <th>Départ</th>
             <th>Arrivée</th>
             <th>Distance</th>
-            <th>Route</th>
+            <th>Faisable</th>
           </tr>
         </thead>
 
@@ -440,7 +440,6 @@ function changerPage(page) {
     setTimeout(afficherCarteBornes, 100);
   }
 }
-  majSidebar();
 
 chargerMission();
 chargerHistorique();
@@ -461,4 +460,5 @@ if (!mission.sensTrajet) mission.sensTrajet = "aller";
 
 chargerVehicules();
 chargerPrixBornes();
+appliquerFondVehicule();
 changerPage("accueil");
