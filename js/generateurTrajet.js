@@ -9,6 +9,8 @@ function construireTrajetAutomatique() {
   if (mission.borne3) listeBornes.push(mission.borne3);
   if (mission.borne4) listeBornes.push(mission.borne4);
   if (mission.borne5) listeBornes.push(mission.borne5);
+  if (mission.borne6) listeBornes.push(mission.borne6);
+  if (mission.borne7) listeBornes.push(mission.borne7);
 
   let liste;
 

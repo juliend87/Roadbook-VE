@@ -63,6 +63,21 @@ function pagePlanificateurVoiture() {
           </select>
         </div>
 
+         <div>
+          <label>🔋 Recharge 6</label>
+          <select id="voitureRecharge6">
+            ${optionsBornesPlanificateur(mission.voitureRecharge6)}
+          </select>
+        </div>
+
+         <div>
+          <label>🔋 Recharge 7</label>
+          <select id="voitureRecharge7">
+            ${optionsBornesPlanificateur(mission.voitureRecharge7)}
+          </select>
+        </div>
+
+
       </div>
 
       <button class="primary-btn" onclick="enregistrerPlanificateurVoiture()">
@@ -92,12 +107,16 @@ function enregistrerPlanificateurVoiture() {
   mission.voitureRecharge3 = document.getElementById("voitureRecharge3").value;
   mission.voitureRecharge4 = document.getElementById("voitureRecharge4").value;
   mission.voitureRecharge5 = document.getElementById("voitureRecharge5").value;
+  mission.voitureRecharge6 = document.getElementById("voitureRecharge6").value;
+  mission.voitureRecharge7 = document.getElementById("voitureRecharge7").value;
 
   mission.borne1 = mission.voitureRecharge1;
   mission.borne2 = mission.voitureRecharge2;
   mission.borne3 = mission.voitureRecharge3;
   mission.borne4 = mission.voitureRecharge4;
   mission.borne5 = mission.voitureRecharge5;
+  mission.borne6 = mission.voitureRecharge6;
+  mission.borne7 = mission.voitureRecharge7;
 
   sauvegarderMission();
   construireTrajetAutomatique();

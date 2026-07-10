@@ -28,12 +28,16 @@ let mission = {
   borne3: "",
   borne4: "",
   borne5: "",
+  borne6: "",
+  borne7: "",
 
   voitureRecharge1: "",
   voitureRecharge2: "",
   voitureRecharge3: "",
   voitureRecharge4: "",
   voitureRecharge5: "",
-
+  voitureRecharge6: "",
+  voitureRecharge7: "",
+  
   troncons: []
 };
