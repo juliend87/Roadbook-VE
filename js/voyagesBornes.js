@@ -64,6 +64,16 @@ function genererSelectBornesVoyage() {
           <select id="borne5">${optionsBornes(mission.borne5)}</select>
         </div>
 
+        <div>
+          <label>🔋 6e recharge</label>
+          <select id="borne6">${optionsBornes(mission.borne6)}</select>
+        </div>
+
+        <div>
+          <label>🔋 7e recharge</label>
+          <select id="borne7">${optionsBornes(mission.borne7)}</select>
+        </div>
+
       </div>
 
       <button class="primary-btn" onclick="enregistrerVoyage()">
