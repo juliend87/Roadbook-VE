@@ -22,9 +22,14 @@ mission.borne3 = document.getElementById("borne3").value;
 
 const b4 = document.getElementById("borne4");
 const b5 = document.getElementById("borne5");
+const b6 = document.getElementById("borne6");
+const b7 = document.getElementById("borne7");
+
 
 mission.borne4 = b4 ? b4.value : "";
 mission.borne5 = b5 ? b5.value : "";
+mission.borne6 = b6 ? b6.value : "";
+mission.borne7 = b7 ? b7.value : "";
 
   if (mission.troncons.length > 0) {
     mission.troncons[0].depart = mission.depart;
@@ -461,12 +466,16 @@ if (!mission.borne2) mission.borne2 = "";
 if (!mission.borne3) mission.borne3 = "";
 if (!mission.borne4) mission.borne4 = "";
 if (!mission.borne5) mission.borne5 = "";
+if (!mission.borne6) mission.borne6 = "";
+if (!mission.borne7) mission.borne7 = "";
 
 if (!mission.voitureRecharge1) mission.voitureRecharge1 = "";
 if (!mission.voitureRecharge2) mission.voitureRecharge2 = "";
 if (!mission.voitureRecharge3) mission.voitureRecharge3 = "";
 if (!mission.voitureRecharge4) mission.voitureRecharge4 = "";
 if (!mission.voitureRecharge5) mission.voitureRecharge5 = "";
+if (!mission.voitureRecharge6) mission.voitureRecharge6 = "";
+if (!mission.voitureRecharge7) mission.voitureRecharge7 = "";
 
 if (!mission.sensTrajet) mission.sensTrajet = "aller";
 if (!mission.socDepart) mission.socDepart = 100;

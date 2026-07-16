@@ -21,7 +21,18 @@ let vehicules = [
     temperatureBatterie: 25,
     source: "À compléter",
     image: "assets/ds4.jpg"
-  }
+  },
+  {
+  nom: "MG S5 EV Luxury 64 kWh",
+  batterie: 63.0,
+  soh: 100,
+  jantes: 18,
+  conso: 19.0,
+  km: 0,
+  temperatureBatterie: 25,
+  source: "La Chaîne EV",
+  image: "assets/mgs5.png"
+}
 ];
 
 let vehiculeIndex = 0;
@@ -47,6 +58,9 @@ function chargerVehicules() {
       } else if (v.nom.includes("DS")) {
         v.image = "assets/ds4.jpg";
       }
+      if (v.nom.includes("MG")) {
+  v.image = "assets/mgs5.png";
+}
     }
   });
 
