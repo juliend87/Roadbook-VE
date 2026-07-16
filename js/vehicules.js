@@ -1,41 +1,3 @@
-console.log("vehicules.js chargé");
-let vehicules = [
-  {
-    nom: "Kia EV4 Grande Autonomie",
-    batterie: 81.4,
-    soh: 100,
-    jantes: 17,
-    conso: 18.5,
-    km: 0,
-    temperatureBatterie: 25,
-    source: "La Chaine EV / manuel",
-    image: "assets/ev4.jpg"
-  },
-  {
-    nom: "DS N°4",
-    batterie: 58,
-    soh: 100,
-    jantes: 19,
-    conso: 17.5,
-    km: 0,
-    temperatureBatterie: 25,
-    source: "À compléter",
-    image: "assets/ds4.jpg"
-  },
-  {
-  nom: "MG S5 EV Luxury 64 kWh",
-  batterie: 63.0,
-  soh: 100,
-  jantes: 18,
-  conso: 19.0,
-  km: 0,
-  temperatureBatterie: 25,
-  source: "La Chaîne EV",
-  image: "assets/mgs5.png"
-}
-];
-
-let vehiculeIndex = 0;
 
 function sauvegarderVehicules() {
   localStorage.setItem("roadbookVehicules", JSON.stringify(vehicules));
@@ -48,6 +10,20 @@ function chargerVehicules() {
   const index = localStorage.getItem("roadbookVehiculeIndex");
 
   if (data) vehicules = JSON.parse(data);
+  // Ajoute automatiquement les nouveaux véhicules
+if (!vehicules.some(v => v.nom === "MG S5 EV Luxury 64 kWh")) {
+  vehicules.push({
+    nom: "MG S5 EV Luxury 64 kWh",
+    batterie: 63.0,
+    soh: 100,
+    jantes: 18,
+    conso: 19.0,
+    km: 0,
+    temperatureBatterie: 25,
+    source: "La Chaîne EV",
+    image: "assets/mgs5.png"
+  });
+}
   if (index !== null) vehiculeIndex = Number(index);
 
   // Ajoute l'image si elle n'existe pas (anciens véhicules)

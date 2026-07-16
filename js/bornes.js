@@ -3,6 +3,40 @@ const bornesStrategiques = [
   // 🇫🇷 FRANCE
   // =========================
 
+  {
+  nom: "Shell Recharge - Cestas",
+  reseau: "Shell Recharge",
+  pays: "France",
+  gps: "44.7458429762822,-0.7033889891744098",
+  puissance: 300,
+  nbBornes: 8,
+  prix: 0.65,
+  type: "secours",
+  planB: "Powerdot - Saint-Geours-de-Maremne",
+  kmPlanB: 65,
+  modeRoute: "lesDeux",
+  zone: "France sud-ouest",
+  electroverse: true,
+  commentaire: "Très bonne borne Shell Recharge. 8 stèles de 300 kW. Bonne alternative avant la descente vers l'Espagne."
+},
+
+{
+  nom: "TotalEnergies - Mios",
+  reseau: "TotalEnergies",
+  pays: "France",
+  gps: "44.659048351798596,-0.828626414430537",
+  puissance: 300,
+  nbBornes: 18,
+  prix: 0.65,
+  type: "principale",
+  planB: "Shell Recharge - Cestas",
+  kmPlanB: 20,
+  modeRoute: "lesDeux",
+  zone: "France sud-ouest",
+  electroverse: true,
+  commentaire: "Très grand hub TotalEnergies. 18 stèles de 300 kW. Excellent arrêt pour les véhicules à autonomie moyenne avant la descente vers l'Espagne."
+},
+
     {
     nom: "Zunder - Saugnac-et-Muret",
     reseau: "Zunder",
