@@ -576,21 +576,13 @@ function pageTrajetsReference() {
 // CARTE LEAFLET
 // ======================================================
 
-function afficherCarteTrajetReference() {
+async function afficherCarteTrajetReference() {
 
-  const conteneur = document.getElementById(
-    "mapTrajetReference"
-  );
-
-  if (!conteneur) {
-    return;
-  }
+  const conteneur = document.getElementById("mapTrajetReference");
+  if (!conteneur) return;
 
   const trajet = obtenirTrajetReference();
-
-  if (!trajet) {
-    return;
-  }
+  if (!trajet) return;
 
   const bornes = bornesDuTrajetReference(trajet);
 
@@ -599,9 +591,7 @@ function afficherCarteTrajetReference() {
     carteTrajetReference = null;
   }
 
-  carteTrajetReference = L.map(
-    "mapTrajetReference"
-  ).setView([42.2, -3.5], 6);
+  carteTrajetReference = L.map("mapTrajetReference");
 
   L.tileLayer(
     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -610,50 +600,115 @@ function afficherCarteTrajetReference() {
     }
   ).addTo(carteTrajetReference);
 
-  const groupe = L.featureGroup()
-    .addTo(carteTrajetReference);
+  const groupe = L.featureGroup().addTo(carteTrajetReference);
 
-  bornes.forEach((borne, index) => {
+  // On prépare tous les points une seule fois
+  const points = [
+    {
+      nom: trajet.depart,
+      gps: trajet.depart
+    },
 
-    if (!borne.gps) {
+    ...bornes.map(borne => ({
+      nom: borne.nom,
+      gps: borne.gps
+    })),
+
+    {
+      nom: trajet.arrivee,
+      gps: trajet.arrivee
+    }
+  ];
+
+  // Calcul des coordonnées une seule fois
+  const coordonnees = await Promise.all(
+    points.map(point =>
+      pointVersCoordonnees(point.nom, point.gps)
+    )
+  );
+
+  // Marqueurs
+  coordonnees.forEach((coord, index) => {
+
+    if (!coord || coord.length < 2) {
+      console.error(
+        "Coordonnées invalides :",
+        points[index].nom,
+        coord
+      );
       return;
     }
 
-    const coordonnees = borne.gps
-      .split(",")
-      .map(Number);
-
-    const lat = coordonnees[0];
-    const lng = coordonnees[1];
-
-    if (
-      !Number.isFinite(lat) ||
-      !Number.isFinite(lng)
-    ) {
-      return;
-    }
-
-    L.marker([lat, lng])
+    L.marker([coord[1], coord[0]])
       .addTo(groupe)
-      .bindPopup(`
-        <b>Arrêt ${index + 1}</b><br>
-        <b>${borne.nom}</b><br>
-        ${borne.reseau} — ${borne.pays}<br>
-        ⚡ ${borne.puissance} kW<br>
-        🔌 ${borne.nbBornes} stèles<br>
-        💶 ${prixAfficheBorneReference(borne)}<br>
-        ${borne.electroverse
-          ? "💳 Electroverse"
-          : "❌ Hors Electroverse"
+      .bindPopup(points[index].nom);
+  });
+
+  // Requêtes ORS lancées en parallèle
+  const promessesTraces = [];
+
+  for (let i = 0; i < coordonnees.length - 1; i++) {
+
+    const depart = coordonnees[i];
+    const arrivee = coordonnees[i + 1];
+
+    if (!depart || !arrivee) continue;
+
+    const body = {
+      coordinates: [
+        depart,
+        arrivee
+      ]
+    };
+
+    if (trajet.modeEspagne === "sansPeage") {
+      body.options = {
+        avoid_features: ["tollways"]
+      };
+    }
+
+    const promesse = fetch(
+      "https://api.openrouteservice.org/v2/directions/driving-car/geojson",
+      {
+        method: "POST",
+        headers: {
+          Authorization: ORS_API_KEY,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(body)
+      }
+    )
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Erreur ORS ${response.status}`);
         }
-        <br><br>
-        <a
-          href="${lienMapsReference(borne.gps)}"
-          target="_blank"
-        >
-          🧭 Naviguer
-        </a>
-      `);
+
+        return response.json();
+      });
+
+    promessesTraces.push(promesse);
+  }
+
+  const resultats = await Promise.allSettled(promessesTraces);
+
+  resultats.forEach(resultat => {
+
+    if (resultat.status === "fulfilled") {
+
+      L.geoJSON(resultat.value, {
+        style: {
+          color: "#2962ff",
+          weight: 5
+        }
+      }).addTo(groupe);
+
+    } else {
+
+      console.error(
+        "Un tronçon n'a pas pu être chargé :",
+        resultat.reason
+      );
+    }
   });
 
   if (groupe.getLayers().length > 0) {
