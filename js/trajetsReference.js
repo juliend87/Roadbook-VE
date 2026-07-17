@@ -54,16 +54,23 @@ const trajetsReference = {
 ds: {
   nomVehicule: "DS N°4",
 
+  // --------------------------------------------------
+  // ALLER : LIMOGES → ÍLHAVO
+  // --------------------------------------------------
+
   aller: {
     titre: "DS N°4 — Limoges vers Ílhavo",
     depart: "10 allée marguerite moreno limoges",
     arrivee: "16 rua do corgo da rainha ilhavo",
+
     socDepart: 100,
     socRecharge: 80,
+
+    // Les deux captures DS ont été réalisées avec péage
     modeEspagne: "peage",
 
     bornes: [
-      "Zunder - Saugnac-et-Muret",
+      "TotalEnergies - Mios",
       "Powerdot - Saint-Geours-de-Maremne",
       "Iberdrola - Altsasu",
       "Zunder - Pancorbo",
@@ -73,12 +80,18 @@ ds: {
     ]
   },
 
+  // --------------------------------------------------
+  // RETOUR : ÍLHAVO → LIMOGES
+  // --------------------------------------------------
+
   retour: {
     titre: "DS N°4 — Ílhavo vers Limoges",
     depart: "16 rua do corgo da rainha ilhavo",
     arrivee: "10 allée marguerite moreno limoges",
+
     socDepart: 100,
     socRecharge: 80,
+
     modeEspagne: "peage",
 
     bornes: [
