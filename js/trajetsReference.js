@@ -67,7 +67,7 @@ ds: {
     socRecharge: 80,
 
     // Les deux captures DS ont été réalisées avec péage
-    modeEspagne: "peage",
+    modeEspagne: "sanspeage",
 
     bornes: [
       "TotalEnergies - Mios",
@@ -92,7 +92,7 @@ ds: {
     socDepart: 100,
     socRecharge: 80,
 
-    modeEspagne: "peage",
+    modeEspagne: "sanspeage",
 
     bornes: [
       "Wenea - Fuentes de Oñoro",
@@ -119,7 +119,7 @@ ds: {
       arrivee: "16 rua do corgo da rainha ilhavo",
       socDepart: 100,
       socRecharge: 80,
-      modeEspagne: "peage",
+      modeEspagne: "sanspeage",
 
      bornes: [
   "Zunder - Saugnac-et-Muret",
@@ -138,7 +138,7 @@ ds: {
       arrivee: "10 allée marguerite moreno limoges",
       socDepart: 100,
       socRecharge: 80,
-      modeEspagne: "peage",
+      modeEspagne: "sanspeage",
 
       bornes: [
         "Wenea - Fuentes de Oñoro",
