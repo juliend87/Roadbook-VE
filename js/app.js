@@ -431,18 +431,28 @@ function changerPage(page) {
 
   if (page === "accueil") {
     contenu.innerHTML = pageAccueil();
+
   } else if (page === "vehicule") {
     contenu.innerHTML = pageVehicules();
+
   } else if (page === "voyages") {
     contenu.innerHTML = pageVoyages();
+
   } else if (page === "planificateurVoiture") {
     contenu.innerHTML = pagePlanificateurVoiture();
+
   } else if (page === "bornes") {
     contenu.innerHTML = pageBornes();
+
+  } else if (page === "trajetsReference") {
+    contenu.innerHTML = pageTrajetsReference();
+
   } else if (page === "budget") {
     contenu.innerHTML = pageBudget();
+
   } else if (page === "rfid") {
     contenu.innerHTML = pageRFID();
+
   } else if (page === "parametres") {
     contenu.innerHTML = pageParametres();
   }
@@ -455,6 +465,10 @@ function changerPage(page) {
 
   if (page === "bornes") {
     setTimeout(afficherCarteBornes, 100);
+  }
+
+  if (page === "trajetsReference") {
+    setTimeout(afficherCarteTrajetReference, 100);
   }
 }
 
