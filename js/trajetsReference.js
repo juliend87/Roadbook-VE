@@ -16,7 +16,6 @@ const trajetsReference = {
       titre: "Kia EV4 — Limoges vers Ílhavo",
       depart: "10 allée marguerite moreno limoges",
       arrivee: "16 rua do corgo da rainha ilhavo",
-      socDepart: 100,
       socRecharge: 80,
       modeEspagne: "sansPeage",
 
@@ -33,7 +32,6 @@ const trajetsReference = {
       titre: "Kia EV4 — Ílhavo vers Limoges",
       depart: "16 rua do corgo da rainha ilhavo",
       arrivee: "10 allée marguerite moreno limoges",
-      socDepart: 100,
       socRecharge: 80,
       modeEspagne: "sansPeage",
 
@@ -63,7 +61,6 @@ ds: {
     depart: "10 allée marguerite moreno limoges",
     arrivee: "16 rua do corgo da rainha ilhavo",
 
-    socDepart: 100,
     socRecharge: 80,
 
     // Les deux captures DS ont été réalisées avec péage
@@ -89,7 +86,6 @@ ds: {
     depart: "16 rua do corgo da rainha ilhavo",
     arrivee: "10 allée marguerite moreno limoges",
 
-    socDepart: 100,
     socRecharge: 80,
 
     modeEspagne: "sanspeage",
@@ -117,7 +113,6 @@ ds: {
       titre: "MG S5 EV — Limoges vers Ílhavo",
       depart: "10 allée marguerite moreno limoges",
       arrivee: "16 rua do corgo da rainha ilhavo",
-      socDepart: 100,
       socRecharge: 80,
       modeEspagne: "sanspeage",
 
@@ -136,7 +131,6 @@ ds: {
       titre: "MG S5 EV — Ílhavo vers Limoges",
       depart: "16 rua do corgo da rainha ilhavo",
       arrivee: "10 allée marguerite moreno limoges",
-      socDepart: 100,
       socRecharge: 80,
       modeEspagne: "sanspeage",
 
@@ -750,7 +744,9 @@ async function utiliserTrajetReference() {
 
   mission.depart = trajet.depart;
   mission.arrivee = trajet.arrivee;
-  mission.socDepart = trajet.socDepart;
+if (!mission.socDepart) {
+    mission.socDepart = trajet.socDepart;
+}
   mission.socRecharge = trajet.socRecharge;
   mission.modeEspagne = trajet.modeEspagne;
 

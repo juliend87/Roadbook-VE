@@ -472,7 +472,19 @@ function changerPage(page) {
   }
 }
 
+function enregistrerSocDepart() {
+
+  mission.socDepart = Number(document.getElementById("socDepart").value);
+
+  sauvegarderMission();
+
+  alert("✅ Batterie de départ enregistrée.");
+
+  changerPage("voyages");
+}
+
 chargerMission();
+console.log("SOC chargé :", mission.socDepart);
 chargerHistorique();
 
 if (!mission.borne1) mission.borne1 = "";
