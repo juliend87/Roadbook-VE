@@ -1,6 +1,6 @@
 function genererRoadbook() {
 
-  let soc = 100;
+  let soc = Number(mission.socDepart || 100);
   let cumul = 0;
   let html = "";
 
@@ -32,7 +32,7 @@ function genererRoadbook() {
 
 function genererTroncons() {
 
-  let batterieDisponible = mission.socDepart;
+  let batterieDisponible = Number(mission.socDepart || 100);
   let html = "";
 
   mission.troncons.forEach((troncon, index) => {
