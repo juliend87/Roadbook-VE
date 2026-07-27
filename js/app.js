@@ -476,11 +476,12 @@ function enregistrerSocDepart() {
 
   mission.socDepart = Number(document.getElementById("socDepart").value);
 
+  console.log("Avant sauvegarde :", mission.socDepart);
+
   sauvegarderMission();
 
-  alert("✅ Batterie de départ enregistrée.");
+  console.log("Après sauvegarde :", JSON.parse(localStorage.getItem("roadbookMission")));
 
-  changerPage("voyages");
 }
 
 chargerMission();
