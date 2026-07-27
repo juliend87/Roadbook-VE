@@ -64,7 +64,7 @@ ds: {
     socRecharge: 80,
 
     // Les deux captures DS ont été réalisées avec péage
-    modeEspagne: "sanspeage",
+    modeEspagne: "sansPeage",
 
     bornes: [
       "TotalEnergies - Mios",
@@ -88,7 +88,7 @@ ds: {
 
     socRecharge: 80,
 
-    modeEspagne: "sanspeage",
+    modeEspagne: "sansPeage",
 
     bornes: [
       "Wenea - Fuentes de Oñoro",
@@ -114,7 +114,7 @@ ds: {
       depart: "10 allée marguerite moreno limoges",
       arrivee: "16 rua do corgo da rainha ilhavo",
       socRecharge: 80,
-      modeEspagne: "sanspeage",
+      modeEspagne: "sansPeage",
 
      bornes: [
   "Zunder - Saugnac-et-Muret",
@@ -506,7 +506,7 @@ function pageTrajetsReference() {
 
         <div class="stat">
           <span>Batterie départ</span>
-          <strong>${trajet.socDepart} %</strong>
+          <strong>${mission.socDepart} %</strong>
         </div>
 
         <div class="stat">
@@ -744,9 +744,7 @@ async function utiliserTrajetReference() {
 
   mission.depart = trajet.depart;
   mission.arrivee = trajet.arrivee;
-if (!mission.socDepart) {
-    mission.socDepart = trajet.socDepart;
-}
+
   mission.socRecharge = trajet.socRecharge;
   mission.modeEspagne = trajet.modeEspagne;
 
